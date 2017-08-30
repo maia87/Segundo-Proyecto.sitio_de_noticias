@@ -1,86 +1,44 @@
-// Tenemos varias funciones armadas que podemos usar:
-
-// obtenerNoticias(): toma todas las noticias de la página
-//
-// ocultarNoticia(noticia): oculta la noticia pasada como parámetro
-// mostrarNoticia(noticia): muestra la noticia pasada como parámetro
-//
-// contienePalabra(noticia, palabra): devuelve true si la noticia tiene la palabra
-// pasada como parámetro
-//
-// recortarTexto(noticia, cantidadPalabras): recorta el texto de la noticia para
-// que su largo sea cantidadPalabras
-
 
 var noticias = obtenerNoticias();
 /*la vble noticias es un array que guarda una lista con todas las noticias*/
 
-// Esta función está de muestra para ver como funciona el while
-// Sólo se está recorriendo las noticias y cambiándole el color
-function marcarNoticiasConWhile(){
-  var contador = 0;
-  // Recorre la variable noticias, iluminando en la que se encuentra en cada momento
-  while(contador < noticias.length){
-    noticiaActual = noticias[contador];
-    cambiarColor(noticiaActual, 'rgb(188, 164, 213)');
-    contador++; //contador = contador + 1
-  }
-}
 
-// Ahora lo mismo pero con un for para ver cuales son las diferencias con el while
-function marcarNoticiasConFor(){
-  for(var contador = 0; contador<noticias.length; contador++){
-    noticiaActual = noticias[contador];
-    cambiarColor(noticiaActual, 'rgb(235, 190, 162)');
-  }
-}
-
-//Ejercicio.
-function resaltarNoticiasQueContengan(palabra){
+/*con esta función resalto las noticias que contengan la palabra dada
+como parámetro. El segundo parámetro=color me permite indicar el color con el
+que quiero resaltar las noticias */
+function resaltarNoticiasQueContengan(palabra, color){
   var contador = 0;
   while(contador < noticias.length){
-    var palabra = "ARGENTINA";
     var noticiaActual = noticias[contador];
     if(contienePalabra(noticiaActual,palabra)) {
-      cambiarColor(noticiaActual, 'rgb(41, 201, 201)');
+      cambiarColor(noticiaActual, color);
     }
     contador++;
-   }
-  }
-
-function resaltarNoticiasQueContenganRobots(palabra){
-  var contador = 0;
-  for  (contador = 0; contador < noticias.length; contador++){
-    var palabra = "robots";
-    var noticiaActual = noticias[contador];
-    if (contienePalabra(noticiaActual,palabra)) {
-      cambiarColor(noticiaActual, 'rgb(13, 179, 74)');
-    }
   }
 }
 
-// Si la noticia incluye la palabra, la ocultamos.
+// Si la noticia incluye la palabra dada como parámetro, la oculta.
 function ocultarNoticiasQueContengan(palabra){
-    for(var contador = 0; contador<noticias.length; contador++) {
-      var noticiaActual = noticias[contador];
-      var palabra="Google";
-      if (contienePalabra(noticiaActual,palabra)){
+  for(var contador = 0; contador<noticias.length; contador++) {
+    var noticiaActual = noticias[contador];
+    if (contienePalabra(noticiaActual,palabra)){
       ocultarNoticia(noticiaActual);
     }
   }
 }
 
+/*El parámetro es un nº. Sirve para indicar la cantidad de palabras que
+debe contener la noticia*/
 function recortarNoticias(cantidadPalabras){
   var contador = 0;
   while (contador < noticias.length) {
-    var cantidadPalabras = 20;
     var noticiaActual = noticias[contador];
     recortarTexto(noticiaActual, cantidadPalabras);
     contador++;
   }
 }
 
-resaltarNoticiasQueContengan();
-resaltarNoticiasQueContenganRobots();
-ocultarNoticiasQueContengan();
-recortarNoticias();
+resaltarNoticiasQueContengan("ARGENTINA",'rgb(41, 201, 201)');
+resaltarNoticiasQueContengan("robots", 'rgb(13, 179, 74)');
+ocultarNoticiasQueContengan("Google");
+recortarNoticias(20);
