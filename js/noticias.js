@@ -38,7 +38,7 @@ function recortarNoticias(cantidadPalabras){
   }
 }
 
-resaltarNoticiasQueContengan("ARGENTINA",'rgb(41, 201, 201)');
+resaltarNoticiasQueContengan("argentina",'rgb(41, 201, 201)');
 resaltarNoticiasQueContengan("robots", 'rgb(13, 179, 74)');
 ocultarNoticiasQueContengan("Google");
 recortarNoticias(20);
